@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Practice</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+	<script src="script.js"></script>
+</head>
+<body ng-app="searchApp">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">A Search App</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse float-right" id="navbarColor02">
+			<ul class="navbar-nav mr-auto ">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Login</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<br>
+	<!-- jumbo -->
+	<div class="container-fluid">
+		<div class="jumbotron " ng-controller="searchCon">
+			<h1 class="display-3">Hello, user!</h1>
+			<p class="lead">This is a simple search application</p>
+			<hr class="my-4">
+
+			<div class="row justify-content-center">
+				<div class="col-6 bg-secondary">
+					<div class="row  p-4">
+						<div class="col-12">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Search" id="inputDefault" ng-model="src">
+							</div>
+						</div>
+
+						<div class="col-12 list-inline">
+							<div class="form-group">
+								<div class="custom-control custom-radio">
+									<input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" ng-model="gdr" value="male">
+									<label class="custom-control-label" for="customRadio1">Male</label>
+								</div>
+								<div class="custom-control custom-radio">
+									<input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" ng-model="gdr" value="female">
+									<label class="custom-control-label" for="customRadio2">Female</label>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<hr class="m-0">
+					<ul class="tlist">
+						<li class="p-3 m-2 bg-info" ng-repeat="user in filtered =( data | filter: {name:src} | filter: {gender:gdr} :true)">
+							Name: {{user.name}} {{user.surname}}<br>
+							Gender: {{user.gender}}
+						</li>
+					</ul>
+					<h3 class="text-center" ng-if="{{filtered.length===0}}">No Result Found</h3>
+				</div>
+			</div>
+
+		</div>
+
+
+	</body>
+	</html>

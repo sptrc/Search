@@ -1,0 +1,29 @@
+.tlist{
+	list-style-type: none;
+}
+
+.tlist > li{
+	color: white;
+	display: inline-block;
+	transition: 0.5s;
+
+}
+.tlist > li:hover{
+	transform: scale(1.05);	
+}
+
+.tlist .ng-enter{
+	transition: 0.5s ease-in;
+	transform: scale(0);
+}
+.tlist .ng-enter-active{
+	transform: scale(1);
+}
+.tlist .ng-leave{
+	transition: 0.5s linear;
+	transform: scale(1);
+}
+
+.tlist .ng-leave-active{
+	transform: scale(0);
+}
